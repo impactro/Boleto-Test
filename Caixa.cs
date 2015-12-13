@@ -44,21 +44,21 @@ namespace Test
             // portato se não for passado a data e hora da gração do anterior nunca irá dar igual
             // Mas atenção é preciso primeiro definir o cedente
             lb.DataHoje = DateTime.Parse("13/12/2015 16:34:08");
-            
+
             Util.AddBoletos(lb);
-            
+
             // Exibir as informações de DUMP ajuda a char os erros e diferenças
-           // lb.ShowDumpLine = true;
+            // lb.ShowDumpLine = true;
 
             string txt = lb.Remessa();
             Console.Write(txt);
-            
+
             File.WriteAllText(@"..\..\TXT\Teste.txt", txt); // Gera um arquivo para testes
             // File.WriteAllText(fileTest, txt); // Gera um novo modelo
             string cAnterior = File.ReadAllText(fileTest);
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
-            Assert.IsTrue(cAnterior == txt, "O resultado da remessa mudou");
+            Assert.IsTrue(cAnterior == txt);
         }
 
         [TestMethod, TestCategory("Retorno")]
@@ -67,7 +67,7 @@ namespace Test
         }
 
         [TestMethod, TestCategory("CampoLivre")]
-        public void Campo_Livre()
+        public void CampoLivre_Caixa()
         {
             Boleto blt = new Boleto();
             string cl;
@@ -75,10 +75,10 @@ namespace Test
             // Logica 1
             cl = Banco_Caixa.CampoLivre(blt, "", "123456789012345", "", "", "9876543210");
             Console.WriteLine(
-                "Campo Livre para código do cedente de 15 digitos: " + cl + 
-                " Agencia/Conta: "+ blt.AgenciaConta + 
-                " Nosso Número: " + blt.NossoNumeroExibicao );
-            Assert.IsTrue(cl == "9876543210123456789012345", "Erro");
+                "Campo Livre para código do cedente de 15 digitos: " + cl +
+                " Agencia/Conta: " + blt.AgenciaConta +
+                " Nosso Número: " + blt.NossoNumeroExibicao);
+            Assert.IsTrue(cl == "9876543210123456789012345");
 
             // Logica 2
             cl = Banco_Caixa.CampoLivre(blt, "5555", "123456", "2", "3", "543210987654321");
@@ -86,7 +86,7 @@ namespace Test
                 "Campo Livre para código de cededente de 6 digitos: " + cl +
                 " Agencia/Conta: " + blt.AgenciaConta +
                 " Nosso Número: " + blt.NossoNumeroExibicao);
-            Assert.IsTrue(cl == "1234560543321049876543219", "Erro");
+            Assert.IsTrue(cl == "1234560543321049876543219");
 
             // Logica 3
             cl = Banco_Caixa.CampoLivre(blt, "", "12345", "7777", "8", "7654321");
@@ -94,7 +94,7 @@ namespace Test
                 "Campo Livre para carteira 8 ara código de cedente de 5 posições: " + cl +
                 " Agencia/Conta: " + blt.AgenciaConta +
                 " Nosso Número: " + blt.NossoNumeroExibicao);
-            Assert.IsTrue(cl == "1234577778700000007654321", "Erro");
+            Assert.IsTrue(cl == "1234577778700000007654321");
 
             // Logica 4
             cl = Banco_Caixa.CampoLivre(blt, "", "333333", "", "1", "76543210987654321");
@@ -102,7 +102,81 @@ namespace Test
                 "Campo Livre para caso generico: " + cl +
                 " Agencia/Conta: " + blt.AgenciaConta +
                 " Nosso Número: " + blt.NossoNumeroExibicao);
-            Assert.IsTrue(cl == "3333337543121049876543214", "Erro");
+            Assert.IsTrue(cl == "3333337543121049876543214");
+
+            // Teste Livre
+            cl = Banco_Caixa.CampoLivre(blt, "", "123456789012345", "", "", "9000003225"); // o DV do Nosso numero tem que dar Zero!
+            Console.WriteLine(
+                "Linha Digitável Formatada: " + CobUtil.CampoLivreFormatado(cl, new int[] { 10, 15 }) + // maximo 25 digitos
+                " Agencia/Conta: " + blt.AgenciaConta +
+                " Nosso Número: " + blt.NossoNumeroExibicao);
+
+            // Linha Digitável Formatada: 9000003225.123456789012345 Agencia / Conta: 1234.567.89012345.2 Nosso Número: 9000003225 - 0
+            // ---------------------------1234567890
+
+        }
+
+        [TestMethod, TestCategory("Boleto")]
+        public void Boleto_Caixa()
+        {
+            // Exemplo 100% de acordo com a documentação usando os parametros mínimos
+            // https://github.com/impactro/Boleto-ASP.NET/files/44866/ESPCODBARR_SICOB.pdf
+            // Página 8, item 5.1.1
+
+            /* Dados usados para cálculo:
+                 104 Banco ...............................Posição: 01 - 03
+                   9 Moeda ...............................Posição: 04 - 04
+    1099(10/10/2000) Fator de Vencimento .................Posição: 06 - 09
+              160,00 Valor ...............................Posição: 10 - 19
+          9001200200 Nosso Número (sem DV) ...............Posição: 20 - 29
+     001287000000012 Código do Cedente no SICOB(sem DV) ..Posição: 30 - 44 */
+
+            // Dados do Recebedor
+            CedenteInfo c = new CedenteInfo()
+            {
+                Banco = "104-0",
+                CodCedente = "001287000000012"
+            };
+
+            // Dados do Pagador
+            SacadoInfo s = new SacadoInfo();
+
+            // Informações do Boleto
+            BoletoInfo b = new BoletoInfo()
+            {
+                DataVencimento = DateTime.Parse("10/10/2000"),
+                ValorDocumento = 160,
+                NossoNumero = "9001200200" // Exemplo do caso especial onde o Dv dá Zero (caso critico)
+            };
+
+            // Cria uma instancia do objeto que calcula e monta um boleto
+            Boleto bol = new Boleto();
+
+            // Seta as variáveis (parametros) com os dados do recebedor (c), pagador (s), e as informações do boleto (b)
+            bol.MakeBoleto(c, s, b);
+
+            // Calcula efetivamente o boleto
+            bol.CalculaBoleto();
+
+            // Imprime a linha digitável no console e alguns outros dados para conferencia
+            Console.WriteLine("Linha Digitável: " + bol.LinhaDigitavel);
+            Console.WriteLine("Agência/Conta: " + bol.AgenciaConta);
+            Console.WriteLine("Nosso Número: " + bol.NossoNumeroExibicao);
+            Console.WriteLine("Fator Vencimento: " + CobUtil.CalcFatVenc(bol.DataVencimento));
+
+            // De acordo com a página 13 deve gerar exatamente a linha abaixo
+            Assert.IsTrue(bol.LinhaDigitavel == "10499.00127 00200.001287 70000.000128 1 10990000016000");
+
+            // Outro exemplo qualquer:
+            b.NossoNumero = "9000003225";
+            bol.MakeBoleto(c, s, b); // atualizo os dados (não é recomendado, mas para simplificar funciona)
+            bol.CalculaBoleto(); // se não chamar esta rotina, virá comos resultados calculados anteriormente
+            Console.WriteLine("Exemplo Livre: Nosso Número: " + bol.NossoNumeroExibicao);
+            Assert.IsTrue(bol.NossoNumeroExibicao == "9000003225-0"); // no caso o sistema sempre preenche com os digitos zeros a esquerda
+
+            // Salva a imagem do boleto para conferencia visual
+            bol.Save("boleto.png");
+
         }
     }
 }
