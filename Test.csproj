@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Caixa.cs" />
     <Compile Include="Santander.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util.cs" />
@@ -64,7 +65,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TXT\" />
+    <Content Include="TXT\Dump.txt" />
+    <Content Include="TXT\Remessa_Caixa.txt" />
+    <Content Include="TXT\Remessa_Santander.txt" />
+    <Content Include="TXT\Teste.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
