@@ -17,8 +17,10 @@ namespace Test
         public void Init()
         {
             Cedente = new CedenteInfo();
-            Cedente.Cedente = "TESTE QUALQUER LTDA";
-            Cedente.CNPJ = "88.083.264/0001-05";
+            //Cedente.Cedente = "TESTE QUALQUER LTDA";
+            //Cedente.CNPJ = "88.083.264/0001-05";
+            Cedente.Cedente = "Via Corte Indústria e Comercio de Oxicorte e Aços LTDA CNPJ:08.539.790/0001-90 ";
+            Cedente.CNPJ = "8539790000190";
             Cedente.Banco = "756-0";
             Cedente.Agencia = "3010";
             Cedente.Conta = "109157-3";
