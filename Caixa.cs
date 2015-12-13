@@ -65,5 +65,44 @@ namespace Test
         public void Retorno_Caixa()
         {
         }
+
+        [TestMethod, TestCategory("CampoLivre")]
+        public void Campo_Livre()
+        {
+            Boleto blt = new Boleto();
+            string cl;
+
+            // Logica 1
+            cl = Banco_Caixa.CampoLivre(blt, "", "123456789012345", "", "", "9876543210");
+            Console.WriteLine(
+                "Campo Livre para código do cedente de 15 digitos: " + cl + 
+                " Agencia/Conta: "+ blt.AgenciaConta + 
+                " Nosso Número: " + blt.NossoNumeroExibicao );
+            Assert.IsTrue(cl == "9876543210123456789012345", "Erro");
+
+            // Logica 2
+            cl = Banco_Caixa.CampoLivre(blt, "5555", "123456", "2", "3", "543210987654321");
+            Console.WriteLine(
+                "Campo Livre para código de cededente de 6 digitos: " + cl +
+                " Agencia/Conta: " + blt.AgenciaConta +
+                " Nosso Número: " + blt.NossoNumeroExibicao);
+            Assert.IsTrue(cl == "1234560543321049876543219", "Erro");
+
+            // Logica 3
+            cl = Banco_Caixa.CampoLivre(blt, "", "12345", "7777", "8", "7654321");
+            Console.WriteLine(
+                "Campo Livre para carteira 8 ara código de cedente de 5 posições: " + cl +
+                " Agencia/Conta: " + blt.AgenciaConta +
+                " Nosso Número: " + blt.NossoNumeroExibicao);
+            Assert.IsTrue(cl == "1234577778700000007654321", "Erro");
+
+            // Logica 4
+            cl = Banco_Caixa.CampoLivre(blt, "", "333333", "", "1", "76543210987654321");
+            Console.WriteLine(
+                "Campo Livre para caso generico: " + cl +
+                " Agencia/Conta: " + blt.AgenciaConta +
+                " Nosso Número: " + blt.NossoNumeroExibicao);
+            Assert.IsTrue(cl == "3333337543121049876543214", "Erro");
+        }
     }
 }
