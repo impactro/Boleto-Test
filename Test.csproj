@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BB.cs" />
     <Compile Include="Sicoob.cs" />
     <Compile Include="Caixa.cs" />
     <Compile Include="Santander.cs" />
