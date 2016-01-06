@@ -1,7 +1,7 @@
 Boleto-Test
 ===========
 
-Testes funcionais de compatibilidade para validação das rotinas de remessa e retorno
+Testes funcionais de compatibilidade para validação das rotinas de remessa e retorno do componente [BoletoASP DLL .Net](http://www.boletoasp.com.br)
 
 1. Exibição de Boleto
 	* HTML (ASP.Net WebControl)
