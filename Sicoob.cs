@@ -65,7 +65,7 @@ namespace Test
             string cl;
 
             // Logica Unica
-            cl = Banco_SICOOB.CampoLivre(blt, "1", "2222", "33", "7654321", "1234567");
+            cl = Banco_SICOOB.CampoLivre(blt, "1", "1", "2222", "33", "7654321", "1234567");
             Console.WriteLine(
                 "Campo Livre: " + cl + 
                 " Agencia/Conta: "+ blt.AgenciaConta + 
