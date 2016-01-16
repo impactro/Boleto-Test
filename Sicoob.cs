@@ -44,8 +44,8 @@ namespace Test
 
             string txt = lb.Remessa();
             Console.Write(txt);
-            
-            File.WriteAllText(@"..\..\TXT\Teste.txt", txt); // Gera um arquivo para testes
+
+            File.WriteAllText(@"..\..\TXT\Teste_Sicoob.txt", txt); // Gera um arquivo para testes
             // File.WriteAllText(fileTest, txt); // Gera um novo modelo
             string cAnterior = File.ReadAllText(fileTest);
 
@@ -70,7 +70,7 @@ namespace Test
                 "Campo Livre: " + cl + 
                 " Agencia/Conta: "+ blt.AgenciaConta + 
                 " Nosso Número: " + blt.NossoNumeroExibicao );
-            Assert.IsTrue(cl == "1222233765432112345670000", "Erro");
+            Assert.IsTrue(cl == "1222233765432112345670001", "Erro");
         }
     }
 }

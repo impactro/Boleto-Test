@@ -35,9 +35,12 @@ namespace Test
         {
             LayoutBancos lb = new LayoutBancos();
             lb.Init(Cedente);
+            lb.DataHoje = Util.DataTeste;
             Util.AddBoletos(lb);
             string txt = lb.Remessa();
             Console.Write(txt);
+
+            File.WriteAllText(@"..\..\TXT\Teste_Santander.txt", txt); // Gera um arquivo para testes de compraração
             // File.WriteAllText(fileTest, txt); // Gera um novo modelo
             string cAnterior = File.ReadAllText(fileTest);
 

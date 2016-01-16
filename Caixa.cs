@@ -53,7 +53,7 @@ namespace Test
             string txt = lb.Remessa();
             Console.Write(txt);
 
-            File.WriteAllText(@"..\..\TXT\Teste.txt", txt); // Gera um arquivo para testes
+            File.WriteAllText(@"..\..\TXT\Teste_Caixa.txt", txt); // Gera um arquivo para testes de compraração
             // File.WriteAllText(fileTest, txt); // Gera um novo modelo
             string cAnterior = File.ReadAllText(fileTest);
 

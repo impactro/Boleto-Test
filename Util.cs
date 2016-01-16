@@ -12,7 +12,8 @@ namespace Test
 
         const int NossoNumeroInicial = 1000;
         const double ValorInicial = 1000d;
-        static DateTime VencimentoInicial = DateTime.Parse("20/10/2015");
+        public static DateTime DataTeste = DateTime.Parse("13/12/2015");
+        public static DateTime VencimentoTeste = DateTime.Parse("20/10/2015");
 
         static internal void AddBoletos(LayoutBancos lb)
         {
@@ -36,15 +37,15 @@ namespace Test
                 Boleto.NossoNumero = (NossoNumeroInicial + n).ToString();
                 Boleto.NumeroDocumento = Boleto.NossoNumero;
                 Boleto.ValorDocumento = ValorInicial + n;
-                Boleto.DataDocumento = DateTime.Now;
-                Boleto.DataVencimento = VencimentoInicial.AddDays(n);
+                Boleto.DataDocumento = DataTeste;
+                Boleto.DataVencimento = VencimentoTeste.AddDays(n);
                 Boleto.Instrucoes = "Todas as informações deste bloqueto são de exclusiva responsabilidade do cedente";
 
                 // outros campos opcionais
                 Boleto.ValorMora = Boleto.ValorDocumento * 0.2 / 30; // Vale lembrar que o juros pode ser tão pequeno que as vezes pode sair como isento
                 Boleto.PercentualMulta = 0.03;
                 Boleto.ValorDesconto = n;
-                Boleto.DataDesconto = DateTime.Now;
+                Boleto.DataDesconto = DataTeste;
                 Boleto.ValorOutras = -n; // abatimentos 
 
                 lb.Add(Boleto, Sacado);
