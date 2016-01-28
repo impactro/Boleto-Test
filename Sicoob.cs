@@ -25,6 +25,7 @@ namespace Test
             Cedente.Agencia = "3010";
             Cedente.Conta = "109157-3";
             Cedente.Convenio = "982296";
+            Cedente.Modalidade = "01";
         }
 
         [TestMethod, TestCategory("Remessa")]

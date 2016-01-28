@@ -47,6 +47,7 @@ namespace Test
                 Boleto.ValorDesconto = n;
                 Boleto.DataDesconto = DataTeste;
                 Boleto.ValorOutras = -n; // abatimentos 
+                Boleto.ParcelaNumero = 1 + (n % 3);
 
                 lb.Add(Boleto, Sacado);
             }
