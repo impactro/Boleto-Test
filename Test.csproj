@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BB.cs" />
+    <Compile Include="Itau.cs" />
     <Compile Include="Sicoob.cs" />
     <Compile Include="Caixa.cs" />
     <Compile Include="Santander.cs" />
@@ -61,9 +62,9 @@
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ImpactroLibrary\Cobranca\Cobranca8.csproj">
+    <ProjectReference Include="..\..\ImpactroLibrary\Cobranca\Cobranca.csproj">
       <Project>{1f150b0e-39c0-4ef1-9841-f30067c8a1ca}</Project>
-      <Name>Cobranca8</Name>
+      <Name>Cobranca</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
