@@ -47,6 +47,13 @@ namespace Test
 
             Util.AddBoletos(lb);
 
+            // Exemplo de definições de dados não calculados no componente, ou não existente inicialmente
+            BoletoInfo boleto = lb.Boletos[Util.NossoNumeroInicial.ToString()]; // Captura apenas o primeiro boleto adicionado pela minha rotina padrão de geração
+            boleto.SetRegEnumValue(CNAB240SegmentoPCaixa.Juros, 1);                   // 118
+            boleto.SetRegEnumValue(CNAB240SegmentoPCaixa.JurosData, Util.DataTeste);  // 119-126
+            boleto.SetRegEnumValue(CNAB240SegmentoPCaixa.JurosMora, 0.26);            // 127-141
+            boleto.SetRegEnumValue(CNAB240SegmentoPCaixa.ProtestoPrazo, 15);          // 222-223
+
             // Exibir as informações de DUMP ajuda a char os erros e diferenças
             // lb.ShowDumpLine = true;
 

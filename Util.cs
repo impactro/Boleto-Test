@@ -1,17 +1,14 @@
 ﻿using Impactro.Cobranca;
 using Impactro.Layout;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Test
 {
     internal class Util
     {
 
-        const int NossoNumeroInicial = 1000;
-        const double ValorInicial = 1000d;
+        public const int NossoNumeroInicial = 1000;
+        public const double ValorInicial = 1000d;
         public static DateTime DataTeste = DateTime.Parse("13/12/2015");
         public static DateTime VencimentoTeste = DateTime.Parse("20/10/2015");
 
