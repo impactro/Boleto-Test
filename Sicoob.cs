@@ -65,7 +65,8 @@ namespace Test
             Boleto blt = new Boleto();
             string cl;
 
-            // Logica Unica
+            // Logica Unica!
+            // Mas vale lembrar que um dos requisitos no NossoNumero é iniciar sempre em '1'
             cl = Banco_SICOOB.CampoLivre(blt, "1", "1", "2222", "33", "7654321", "1234567");
             Console.WriteLine(
                 "Campo Livre: " + cl + 

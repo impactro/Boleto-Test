@@ -70,8 +70,13 @@
   <ItemGroup>
     <Content Include="TXT\Dump.txt" />
     <Content Include="TXT\Remessa_Caixa.txt" />
+    <Content Include="TXT\Remessa_Itau.txt" />
     <Content Include="TXT\Remessa_Santander.txt" />
-    <Content Include="TXT\Teste.txt" />
+    <Content Include="TXT\Remessa_Sicoob.txt" />
+    <Content Include="TXT\Teste_Caixa.txt" />
+    <Content Include="TXT\Teste_Itau.txt" />
+    <Content Include="TXT\Teste_Santander.txt" />
+    <Content Include="TXT\Teste_Sicoob.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
