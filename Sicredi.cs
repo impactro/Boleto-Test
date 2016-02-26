@@ -7,9 +7,9 @@ using System.IO;
 namespace Test
 {
     [TestClass]
-    public class Sicoob
+    public class Sicredi
     {
-        const string fileTest = @"..\..\TXT\Remessa_Sicoob.txt"; // para deixar na pasta TXT/ do projeto
+        const string fileTest = @"..\..\TXT\Remessa_Sicredi.txt"; // para deixar na pasta TXT/ do projeto
 
         CedenteInfo Cedente;
 
@@ -19,23 +19,18 @@ namespace Test
             Cedente = new CedenteInfo();
             Cedente.Cedente = "TESTE QUALQUER LTDA";
             Cedente.CNPJ = "88.083.264/0001-05";
-            Cedente.Banco = "756-0";
-            Cedente.Agencia = "3010";
-            Cedente.Conta = "109157-3";
-            Cedente.Convenio = "982296";
-            Cedente.Modalidade = "01";
+            Cedente.Cedente = "Exemplo de empresa cedente";
+            Cedente.Banco = "748-2";
+            Cedente.Agencia = "0911";
+            Cedente.Conta = Cedente.CodCedente = "10943";
+            Cedente.Modalidade = "04"; // posto
         }
 
         [TestMethod, TestCategory("Remessa")]
-        public void Remessa_Sicoob()
+        public void Remessa_Sicredi()
         {
             LayoutBancos lb = new LayoutBancos();
             lb.Init(Cedente);
-            // O CNB240 tem a referencia da data de geração do arquivo, 
-            // portato se não for passado a data e hora da gração do anterior nunca irá dar igual
-            // Mas atenção é preciso primeiro definir o cedente
-            lb.DataHoje = DateTime.Parse("13/12/2015 16:34:08");
-            
             Util.AddBoletos(lb);
             
             // Exibir as informações de DUMP ajuda a char os erros e diferenças
@@ -44,7 +39,7 @@ namespace Test
             string txt = lb.Remessa();
             Console.Write(txt);
 
-            File.WriteAllText(@"..\..\TXT\Teste_Sicoob.txt", txt); // Gera um arquivo para testes
+            File.WriteAllText(@"..\..\TXT\Teste_Sicredi.txt", txt); // Gera um arquivo para testes
             // File.WriteAllText(fileTest, txt); // Gera um novo modelo
             string cAnterior = File.ReadAllText(fileTest);
 
@@ -53,24 +48,23 @@ namespace Test
         }
 
         [TestMethod, TestCategory("Retorno")]
-        public void Retorno_Sicoob()
+        public void Retorno_Sicredi()
         {
         }
 
         [TestMethod, TestCategory("CampoLivre")]
-        public void CampoLivre_Sicoob()
+        public void CampoLivre_Sicredi()
         {
             Boleto blt = new Boleto();
             string cl;
 
             // Logica Unica!
             // Mas vale lembrar que um dos requisitos no NossoNumero é iniciar sempre em '1'
-            cl = Banco_SICOOB.CampoLivre(blt, "1", "1", "2222", "33", "7654321", "1234567");
+            cl = Banco_Sicredi.CampoLivre(blt, "1111", "22", "33333", "44444");
             Console.WriteLine(
                 "Campo Livre: " + cl + 
-                " Agencia/Conta: "+ blt.AgenciaConta + 
                 " Nosso Número: " + blt.NossoNumeroExibicao );
-            Assert.IsTrue(cl == "1222233765432112345670001", "Erro");
+            Assert.IsTrue(cl == "3101244444011112233333001", "Erro");
         }
     }
 }

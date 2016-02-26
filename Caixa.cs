@@ -40,9 +40,6 @@ namespace Test
         {
             LayoutBancos lb = new LayoutBancos();
             lb.Init(Cedente);
-            // O CNB240 tem a referencia da data de geração do arquivo, 
-            // portato se não for passado a data e hora da gração do anterior nunca irá dar igual
-            // Mas atenção é preciso primeiro definir o cedente
             lb.DataHoje = DateTime.Parse("13/12/2015 16:34:08");
 
             Util.AddBoletos(lb);
