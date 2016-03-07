@@ -18,11 +18,11 @@ namespace Test
         {
             Cedente = new CedenteInfo();
             Cedente.Cedente = "TESTE QUALQUER LTDA";
-            Cedente.CNPJ = "88.083.264/0001-05";
+            Cedente.CNPJ = "12.345.678/0001-99";
             Cedente.Cedente = "Exemplo de empresa cedente";
             Cedente.Banco = "748-2";
-            Cedente.Agencia = "0911";
-            Cedente.Conta = Cedente.CodCedente = "10943";
+            Cedente.Agencia = "4444";
+            Cedente.Conta = Cedente.CodCedente = "55555";
             Cedente.Modalidade = "04"; // posto
         }
 

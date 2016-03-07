@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="BB.cs" />
     <Compile Include="Itau.cs" />
+    <Compile Include="Bradesco.cs" />
     <Compile Include="Sicredi.cs" />
     <Compile Include="Sicoob.cs" />
     <Compile Include="Caixa.cs" />
