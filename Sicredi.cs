@@ -65,7 +65,7 @@ namespace Test
 
             // Logica Unica!
             // Mas vale lembrar que um dos requisitos no NossoNumero é iniciar sempre em '1'
-            cl = Banco_Sicredi.CampoLivre(blt, "1111", "22", "33333", "44444");
+            cl = Banco_Sicredi.CampoLivre(blt, "1111", "22", "33333", "44444", "3");
             Console.WriteLine(
                 "Campo Livre: " + cl + 
                 " Nosso Número: " + blt.NossoNumeroExibicao );
