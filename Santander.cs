@@ -34,7 +34,7 @@ namespace Test
         public void Remessa_Santander()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente);
+            lb.Init(Cedente, LayoutTipo.CNAB400);
             lb.DataHoje = Util.DataTeste;
             Util.AddBoletos(lb);
             string txt = lb.Remessa();

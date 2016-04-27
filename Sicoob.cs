@@ -30,7 +30,7 @@ namespace Test
         public void Remessa_Sicoob()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente);
+            lb.Init(Cedente, LayoutTipo.CNAB240);
             // O CNB240 tem a referencia da data de geração do arquivo, 
             // portato se não for passado a data e hora da gração do anterior nunca irá dar igual
             // Mas atenção é preciso primeiro definir o cedente

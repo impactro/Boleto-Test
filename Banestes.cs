@@ -42,31 +42,30 @@ namespace Test
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_Banestes()
         {
-            //LayoutBancos lb = new LayoutBancos();
-            //lb.Init(Cedente);
-            //lb.DataHoje = DateTime.Parse("23/04/2016 11:30:00");
+            // (em homologação: 27/04/2016)
 
-            //Util.AddBoletos(lb);
+            LayoutBancos lb = new LayoutBancos();
+            lb.Init(Cedente, LayoutTipo.CNAB400);
+            lb.DataHoje = DateTime.Parse("23/04/2016 11:30:00");
+
+            Util.AddBoletos(lb);
 
             //// Exemplo de definições de dados não calculados no componente, ou não existente inicialmente
-            //BoletoInfo boleto = lb.Boletos[Util.NossoNumeroInicial.ToString()]; // Captura apenas o primeiro boleto adicionado pela minha rotina padrão de geração
-            ////boleto.SetRegEnumValue(CNAB240SegmentoPCaixa.Juros, 1);                   // 118
-            ////boleto.SetRegEnumValue(CNAB240SegmentoPCaixa.JurosData, Util.DataTeste);  // 119-126
-            ////boleto.SetRegEnumValue(CNAB240SegmentoPCaixa.JurosMora, 0.26);            // 127-141
-            ////boleto.SetRegEnumValue(CNAB240SegmentoPCaixa.ProtestoPrazo, 15);          // 222-223
+            BoletoInfo boleto = lb.Boletos[Util.NossoNumeroInicial.ToString()]; // Captura apenas o primeiro boleto adicionado pela minha rotina padrão de geração
+            boleto.SetRegEnumValue(CNAB400Remessa1Banestes.Mensagem, "Mensagem a ser impressa..."); // 352-391
 
-            //// Exibir as informações de DUMP ajuda a char os erros e diferenças
-            //// lb.ShowDumpLine = true;
+            // Exibir as informações de DUMP ajuda a char os erros e diferenças
+            // lb.ShowDumpLine = true;
 
-            //string txt = lb.Remessa();
-            //Console.Write(txt);
+            string txt = lb.Remessa();
+            Console.Write(txt);
 
-            //File.WriteAllText(@"..\..\TXT\Teste_Banestes.txt", txt); // Gera um arquivo para testes de compraração
-            //// File.WriteAllText(fileTest, txt); // Gera um novo modelo
-            //string cAnterior = File.ReadAllText(fileTest);
+            File.WriteAllText(@"..\..\TXT\Teste_Banestes.txt", txt); // Gera um arquivo para testes de compraração
+            //File.WriteAllText(fileTest, txt); // Gera um novo modelo
+            string cAnterior = File.ReadAllText(fileTest);
 
-            //// Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
-            //Assert.IsTrue(cAnterior == txt);
+            // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
+            Assert.IsTrue(cAnterior == txt);
         }
 
         [TestMethod, TestCategory("Retorno")]
@@ -141,9 +140,6 @@ namespace Test
             Assert.IsTrue(bol.LinhaDigitavel == "02190.00106 29700.007734 00704.021823 3 11590000013150");
             // Note que o digito verificador é 3... acho que houve confusão na digitação da documentação
             // E este número retorna exatamente o informado na página 32: 021.9.3.1159.0000013150-0001029700007730070402182
-
-
-
         }
     }
 }

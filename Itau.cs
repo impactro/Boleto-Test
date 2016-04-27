@@ -29,7 +29,7 @@ namespace Test
         public void Remessa_Itau()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente);
+            lb.Init(Cedente, LayoutTipo.CNAB400);
             lb.DataHoje = DateTime.Parse("13/12/2015 16:34:08");
 
             Util.AddBoletos(lb);

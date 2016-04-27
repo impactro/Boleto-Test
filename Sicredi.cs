@@ -30,7 +30,7 @@ namespace Test
         public void Remessa_Sicredi()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente);
+            lb.Init(Cedente, LayoutTipo.CNAB400);
             // Somente apos inicializar, pode-se definir alguns valores!
             lb.DataHoje = Util.DataTeste; // Data a ser usada no header da remessa, para dar sempre o mesmo resultado nos testes
             lb.Lote = 1234; // apenas para sempre gerar o mesmo numero de lote a cada teste

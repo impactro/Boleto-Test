@@ -39,7 +39,7 @@ namespace Test
         public void Remessa_Caixa()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente);
+            lb.Init(Cedente, LayoutTipo.CNAB240);
             lb.DataHoje = DateTime.Parse("13/12/2015 16:34:08");
 
             Util.AddBoletos(lb);
