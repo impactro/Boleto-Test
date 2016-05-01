@@ -80,6 +80,7 @@
     <Content Include="TXT\Remessa_Santander.txt" />
     <Content Include="TXT\Remessa_Sicoob.txt" />
     <Content Include="TXT\Remessa_Sicredi.txt" />
+    <Content Include="TXT\Retorno_Sicredi.txt" />
     <Content Include="TXT\Teste_Banestes.txt" />
     <Content Include="TXT\Teste_Bradesco.txt" />
     <Content Include="TXT\Teste_Caixa.txt" />
