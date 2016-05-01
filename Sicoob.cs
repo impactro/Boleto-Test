@@ -52,11 +52,6 @@ namespace Test
             Assert.IsTrue(cAnterior == txt, "O resultado da remessa mudou");
         }
 
-        [TestMethod, TestCategory("Retorno")]
-        public void Retorno_Sicoob()
-        {
-        }
-
         [TestMethod, TestCategory("CampoLivre")]
         public void CampoLivre_Sicoob()
         {

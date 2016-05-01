@@ -8,9 +8,7 @@ namespace Test
 {
     [TestClass]
     public class Sicredi
-    {
-        const string fileTest = @"..\..\TXT\Remessa_Sicredi.txt"; // para deixar na pasta TXT/ do projeto
-
+    { 
         CedenteInfo Cedente;
 
         [TestInitialize]
@@ -46,7 +44,7 @@ namespace Test
 
             File.WriteAllText(@"..\..\TXT\Teste_Sicredi.txt", txt); // Gera um arquivo para testes
             // File.WriteAllText(fileTest, txt); // Gera um novo modelo
-            string cAnterior = File.ReadAllText(fileTest);
+            string cAnterior = File.ReadAllText(@"..\..\TXT\Remessa_Sicredi.txt");
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
             Assert.IsTrue(cAnterior == txt, "O resultado da remessa mudou");
@@ -55,6 +53,22 @@ namespace Test
         [TestMethod, TestCategory("Retorno")]
         public void Retorno_Sicredi()
         {
+            LayoutBancos r = new LayoutBancos(); 
+            r.Init(Cedente, LayoutTipo.CNAB400);
+
+            string cFileRET = File.ReadAllText(@"..\..\TXT\Retorno_Sicredi.txt");
+            Layout ret = r.Retorno(cFileRET);
+
+            // O resultado pode vir completo em uma tabela
+            // var tb = ret.Table(typeof(CNAB400Retorno1Bradesco)); 
+
+            // Ou usa-se o array de boletos
+            BoletoInfo Boleto;
+            foreach (string nn in r.Boletos.NossoNumeros)
+            {
+                Boleto = r.Boletos[nn];
+                Console.Write("{0} {1:dd/MM/yyyy} {2:C} <br/>\r\n", Boleto.NossoNumero, Boleto.DataVencimento, Boleto.ValorDocumento);
+            }
         }
 
         [TestMethod, TestCategory("CampoLivre")]

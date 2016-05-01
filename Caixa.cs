@@ -65,11 +65,6 @@ namespace Test
             Assert.IsTrue(cAnterior == txt);
         }
 
-        [TestMethod, TestCategory("Retorno")]
-        public void Retorno_Caixa()
-        {
-        }
-
         [TestMethod, TestCategory("CampoLivre")]
         public void CampoLivre_Caixa()
         {

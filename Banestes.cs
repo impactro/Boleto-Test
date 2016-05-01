@@ -68,11 +68,6 @@ namespace Test
             Assert.IsTrue(cAnterior == txt);
         }
 
-        [TestMethod, TestCategory("Retorno")]
-        public void Retorno_Banestes()
-        {
-        }
-
         [TestMethod, TestCategory("Boleto")]
         public void Boleto_Banestes()
         {

@@ -47,10 +47,5 @@ namespace Test
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
             Assert.IsTrue(cAnterior == txt, "O resultado da remessa mudou");
         }
-
-        [TestMethod, TestCategory("Retorno")]
-        public void Retorno_Santander()
-        {
-        }
     }
 }
