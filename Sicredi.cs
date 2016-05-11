@@ -57,18 +57,27 @@ namespace Test
             r.Init(Cedente, LayoutTipo.CNAB400);
 
             string cFileRET = File.ReadAllText(@"..\..\TXT\Retorno_Sicredi.txt");
+            r.ErroType = BoletoDuplicado.Lista;
             Layout ret = r.Retorno(cFileRET);
 
             // O resultado pode vir completo em uma tabela
             // var tb = ret.Table(typeof(CNAB400Retorno1Bradesco)); 
+            //string cErros = r.ErroLinhas;
+            //Assert.IsTrue(string.IsNullOrEmpty(cErros), cErros);
 
             // Ou usa-se o array de boletos
-            BoletoInfo Boleto;
             foreach (string nn in r.Boletos.NossoNumeros)
             {
-                Boleto = r.Boletos[nn];
-                Console.Write("{0} {1:dd/MM/yyyy} {2:C} <br/>\r\n", Boleto.NossoNumero, Boleto.DataVencimento, Boleto.ValorDocumento);
+                BoletoInfo Boleto = r.Boletos[nn];
+                Console.Write("{0} {1:dd/MM/yyyy} {2:C}\r\n", Boleto.NossoNumero, Boleto.DataPagamento, Boleto.ValorDocumento);
             }
+
+            // por causa do tipo (r.ErroType) pode haver duplicidade de dados
+            // pois um boleto pode ter sido baixado e protestado ou pago, 
+            // e com alguma ocorrencia e assim cada registro informa algo
+            Console.WriteLine("Duplicados:");
+            foreach (var Boleto in r.Boletos.Duplicados)
+                Console.Write("{0} {1:dd/MM/yyyy} {2:C}\r\n", Boleto.NossoNumero, Boleto.DataPagamento, Boleto.ValorDocumento);
         }
 
         [TestMethod, TestCategory("CampoLivre")]
