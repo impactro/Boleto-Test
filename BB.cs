@@ -24,6 +24,11 @@ namespace Test
 
             Assert.IsTrue(cl == "0000002719715000000001418");
             // Nosso Numero      ------12345678901234567--
+
+            // Exemplo documentação pagina 22
+            string cDAC = Banco_do_Brasil.NossoNumeroDV("05009401448");
+            Console.WriteLine("DAC: " + cDAC);
+            Assert.IsTrue(cDAC == "1");
         }
     }
 }
