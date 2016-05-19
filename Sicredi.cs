@@ -93,6 +93,23 @@ namespace Test
                 "Campo Livre: " + cl + 
                 " Nosso Número: " + blt.NossoNumeroExibicao );
             Assert.IsTrue(cl == "3101244444011112233333001", "Erro");
+
+            /* Do exemplo da documentação página 16 (https://github.com/impactro/Boleto-Test/blob/master/DOC/sicredi_cnab400.pdf)
+            Linha digitável: 74891.11422 00001.03544 02000.921078 9 618700000010000 (usando http://exemplos.boletoasp.com.br/BoletoNet/FuncTeste_DecodIPTE.aspx para obter o código de barras)
+            Código de barras: 748.9.6.1870.0000010000-1114200001035442000921078 
+            Temos o Campo Livre: 1 1 14 2 00001 0 3544 20 00921 0 7 8
+                           onde: R C yy b nnnnn d AAAA PP CCCCC V 0 D
+                                                                  X => Note que este campo deveria ser ZERO e é 7!
+                                                                       Isso é estrano, pois não está de acordo com a documentação, assim no exemplo estou assumindo como 0
+                                                                       Logico que o deigito verificar seguinte muda com isso
+            */
+            blt = new Boleto();
+            blt.DataVencimento = new DateTime(2014, 9, 15); // O ano de vencimento entra na formação do nosso numero
+            cl = Banco_Sicredi.CampoLivre(blt, "3544", "20", "00921", "00001", "1");
+            Console.WriteLine(
+                "Campo Livre: " + cl +
+                " Nosso Número: " + blt.NossoNumeroExibicao);
+            Assert.IsTrue(cl == "1114200001035442000921000", "Erro"); 
         }
     }
 }
