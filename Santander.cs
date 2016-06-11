@@ -21,7 +21,7 @@ namespace Test
             Cedente.Agencia = "1234-1";
             Cedente.Conta = "001234567-8";
             Cedente.CodCedente = "1231230";
-            Cedente.CarteiraTipo = "5";
+            Cedente.CarteiraTipo = "5"; // Fundamental para homologação!
             Cedente.Carteira = "101";
             Cedente.CedenteCOD = "33333334892001304444"; // 20 digitos (note que o final, é o numero da conta, sem os ultios 2 digitos)
             Cedente.Convenio = "0000000000000000002222220"; // 25 digitos
