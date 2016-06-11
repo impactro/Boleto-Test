@@ -110,8 +110,10 @@ namespace Test
                 " Agencia/Conta: " + blt.AgenciaConta +
                 " Nosso Número: " + blt.NossoNumeroExibicao);
 
-            // Linha Digitável Formatada: 9000003225.123456789012345 Agencia / Conta: 1234.567.89012345.2 Nosso Número: 9000003225 - 0
+            // Linha Digitável Formatada: 9000003225.123456789012345
             // ---------------------------1234567890
+            // Agencia / Conta: 1234.567.89012345.2 
+            // Nosso Número: 9000003225 - 0
 
         }
 
