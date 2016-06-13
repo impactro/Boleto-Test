@@ -58,6 +58,7 @@
     <Compile Include="Banestes.cs" />
     <Compile Include="Itau.cs" />
     <Compile Include="Bradesco.cs" />
+    <Compile Include="BRB.cs" />
     <Compile Include="Sicredi.cs" />
     <Compile Include="Sicoob.cs" />
     <Compile Include="Caixa.cs" />
@@ -75,6 +76,7 @@
     <Content Include="TXT\Dump.txt" />
     <Content Include="TXT\Remessa_Banestes.txt" />
     <Content Include="TXT\Remessa_Bradesco.txt" />
+    <Content Include="TXT\Remessa_BRB.txt" />
     <Content Include="TXT\Remessa_Caixa.txt" />
     <Content Include="TXT\Remessa_Itau.txt" />
     <Content Include="TXT\Remessa_Santander.txt" />
@@ -83,6 +85,7 @@
     <Content Include="TXT\Retorno_Sicredi.txt" />
     <Content Include="TXT\Teste_Banestes.txt" />
     <Content Include="TXT\Teste_Bradesco.txt" />
+    <Content Include="TXT\Teste_BRB.txt" />
     <Content Include="TXT\Teste_Caixa.txt" />
     <Content Include="TXT\Teste_Itau.txt" />
     <Content Include="TXT\Teste_Santander.txt" />
