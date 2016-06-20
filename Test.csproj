@@ -75,6 +75,7 @@
   <ItemGroup>
     <Content Include="TXT\Dump.txt" />
     <Content Include="TXT\Remessa_Banestes.txt" />
+    <Content Include="TXT\Remessa_BB.txt" />
     <Content Include="TXT\Remessa_Bradesco.txt" />
     <Content Include="TXT\Remessa_BRB.txt" />
     <Content Include="TXT\Remessa_Caixa.txt" />
@@ -84,6 +85,7 @@
     <Content Include="TXT\Remessa_Sicredi.txt" />
     <Content Include="TXT\Retorno_Sicredi.txt" />
     <Content Include="TXT\Teste_Banestes.txt" />
+    <Content Include="TXT\Teste_BB.txt" />
     <Content Include="TXT\Teste_Bradesco.txt" />
     <Content Include="TXT\Teste_BRB.txt" />
     <Content Include="TXT\Teste_Caixa.txt" />
