@@ -28,13 +28,14 @@ namespace Test
             Cedente.Cedente = "TESTE QUALQUER LTDA";
             Cedente.CNPJ = "88.083.264/0001-05";
             Cedente.useSantander = true; //importante para gerar o código de barras correto (por questão de compatibilidade o padrão é false)
+            Cedente.Layout = LayoutTipo.CNAB400;
         }
 
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_Santander()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente, LayoutTipo.CNAB400);
+            lb.Init(Cedente);
             lb.DataHoje = Util.DataTeste;
             Util.AddBoletos(lb);
             string txt = lb.Remessa();

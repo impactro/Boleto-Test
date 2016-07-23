@@ -23,13 +23,14 @@ namespace Test
             Cedente.Carteira = "123";          // Código da Carteira
             Cedente.Cedente = "TESTE QUALQUER LTDA";
             Cedente.CNPJ = "88.999.222/0001-33";
+            Cedente.Layout = LayoutTipo.CNAB400;
         }
 
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_Itau()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente, LayoutTipo.CNAB400);
+            lb.Init(Cedente);
             lb.DataHoje = DateTime.Parse("13/12/2015 16:34:08");
 
             Util.AddBoletos(lb);

@@ -25,13 +25,14 @@ namespace Test
             Cedente.Carteira = "16";
             Cedente.Modalidade = "18";
             Cedente.Convenio = "123456";
+            Cedente.Layout = LayoutTipo.CNAB400;
         }
 
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_BB()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente, LayoutTipo.CNAB400);
+            lb.Init(Cedente);
             lb.DataHoje = DateTime.Parse("19/06/2016 20:31:08");
 
             Util.AddBoletos(lb);

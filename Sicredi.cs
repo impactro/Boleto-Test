@@ -22,13 +22,14 @@ namespace Test
             Cedente.Agencia = "4444";
             Cedente.Conta = Cedente.CodCedente = "55555";
             Cedente.Modalidade = "04"; // posto
+            Cedente.Layout = LayoutTipo.CNAB400;
         }
 
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_Sicredi()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente, LayoutTipo.CNAB400);
+            lb.Init(Cedente);
             // Somente apos inicializar, pode-se definir alguns valores!
             lb.DataHoje = Util.DataTeste; // Data a ser usada no header da remessa, para dar sempre o mesmo resultado nos testes
             lb.Lote = 1234; // apenas para sempre gerar o mesmo numero de lote a cada teste
@@ -54,7 +55,7 @@ namespace Test
         public void Retorno_Sicredi()
         {
             LayoutBancos r = new LayoutBancos(); 
-            r.Init(Cedente, LayoutTipo.CNAB400);
+            r.Init(Cedente);
 
             string cFileRET = File.ReadAllText(@"..\..\TXT\Retorno_Sicredi.txt");
             r.ErroType = BoletoDuplicado.Lista;

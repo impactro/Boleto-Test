@@ -22,13 +22,14 @@ namespace Test
             Cedente.Conta = "001466-4";
             Cedente.Carteira = "09";
             Cedente.CedenteCOD = "00000000000001111111"; // 20 digitos
+            Cedente.Layout = LayoutTipo.CNAB400;
         }
 
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_Bradesco()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente, LayoutTipo.CNAB400);
+            lb.Init(Cedente);
             lb.DataHoje = Util.DataTeste;
             Util.AddBoletos(lb);
             string txt = lb.Remessa();

@@ -24,13 +24,14 @@ namespace Test
             Cedente.Conta = "333333-3";
             Cedente.Convenio = "555555";
             Cedente.Modalidade = "01";
+            Cedente.Layout = LayoutTipo.CNAB240;
         }
 
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_Sicoob()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente, LayoutTipo.CNAB240);
+            lb.Init(Cedente);
             // O CNB240 tem a referencia da data de geração do arquivo, 
             // portato se não for passado a data e hora da gração do anterior nunca irá dar igual
             // Mas atenção é preciso primeiro definir o cedente

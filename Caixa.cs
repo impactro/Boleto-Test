@@ -33,13 +33,14 @@ namespace Test
             BoletoTextos.LocalPagamento = "PREFERENCIALMENTE NAS CASAS LOTÉRICAS ATÉ O VALOR LIMITE";
             Cedente.Cedente = "TESTE QUALQUER LTDA";
             Cedente.CNPJ = "88.083.264/0001-05";
+            Cedente.Layout = LayoutTipo.CNAB240;
         }
 
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_Caixa()
         {
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente, LayoutTipo.CNAB240);
+            lb.Init(Cedente);
             lb.DataHoje = DateTime.Parse("13/12/2015 16:34:08");
 
             Util.AddBoletos(lb);

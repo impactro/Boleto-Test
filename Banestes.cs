@@ -26,6 +26,7 @@ namespace Test
             Cedente.Endereco = "Rua Sei la aonde";
             Cedente.Cedente = "TESTE QUALQUER LTDA";
             Cedente.CNPJ = "12.345.678/0001-12";
+            Cedente.Layout = LayoutTipo.CNAB400;
         }
 
         [TestMethod, TestCategory("CampoLivre")]
@@ -45,7 +46,7 @@ namespace Test
             // (em homologação: 27/04/2016)
 
             LayoutBancos lb = new LayoutBancos();
-            lb.Init(Cedente, LayoutTipo.CNAB400);
+            lb.Init(Cedente);
             lb.DataHoje = DateTime.Parse("23/04/2016 11:30:00");
 
             Util.AddBoletos(lb);
