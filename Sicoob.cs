@@ -36,6 +36,8 @@ namespace Test
             // portato se não for passado a data e hora da gração do anterior nunca irá dar igual
             // Mas atenção é preciso primeiro definir o cedente
             lb.DataHoje = DateTime.Parse("13/12/2015 16:34:08");
+            //lb.Lote = 1234;
+            //lb.SequencialLote = 5678;
             
             Util.AddBoletos(lb);
             
