@@ -48,5 +48,35 @@ namespace Test
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
             Assert.IsTrue(cAnterior == txt, "O resultado da remessa mudou");
         }
+
+        [TestMethod, TestCategory("Retorno")]
+        public void Retorno_Santander()
+        {
+            LayoutBancos r = new LayoutBancos();
+            r.Init(Cedente);
+
+            string cFileRET = File.ReadAllText(@"..\..\TXT\Retorno_Santander.txt");
+            r.ErroType = BoletoDuplicado.Lista;
+            Layout ret = r.Retorno(cFileRET);
+
+            // O resultado pode vir completo em uma tabela
+            // var tb = ret.Table(typeof(CNAB400Retorno1Bradesco)); 
+            //string cErros = r.ErroLinhas;
+            //Assert.IsTrue(string.IsNullOrEmpty(cErros), cErros);
+
+            // Ou usa-se o array de boletos
+            foreach (string nn in r.Boletos.NossoNumeros)
+            {
+                BoletoInfo Boleto = r.Boletos[nn];
+                Console.Write("{0} {1:dd/MM/yyyy} {2:C}\r\n", Boleto.NossoNumero, Boleto.DataPagamento, Boleto.ValorDocumento);
+            }
+
+            // por causa do tipo (r.ErroType) pode haver duplicidade de dados
+            // pois um boleto pode ter sido baixado e protestado ou pago, 
+            // e com alguma ocorrencia e assim cada registro informa algo
+            Console.WriteLine("Duplicados:");
+            foreach (var Boleto in r.Boletos.Duplicados)
+                Console.Write("{0} {1:dd/MM/yyyy} {2:C}\r\n", Boleto.NossoNumero, Boleto.DataPagamento, Boleto.ValorDocumento);
+        }
     }
 }
