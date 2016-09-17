@@ -7,7 +7,7 @@ using System.IO;
 namespace Test
 {
     [TestClass]
-    public class Caixa
+    public partial class Caixa
     {
         const string fileTest = @"..\..\TXT\Remessa_Caixa.txt"; // para deixar na pasta TXT/ do projeto
 
@@ -35,7 +35,7 @@ namespace Test
             Cedente.CNPJ = "88.083.264/0001-05";
             Cedente.Layout = LayoutTipo.CNAB240;
         }
-
+        
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_Caixa()
         {
