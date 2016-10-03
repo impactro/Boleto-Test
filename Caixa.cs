@@ -66,6 +66,48 @@ namespace Test
             Assert.IsTrue(cAnterior == txt);
         }
 
+        [TestMethod, TestCategory("Retorno")]
+        public void Retorno_Caixa()
+        {
+            LayoutBancos r = new LayoutBancos();
+            r.Init(Cedente);
+
+            string cFileRET = File.ReadAllText(@"..\..\TXT\Retorno_Caixa.txt");
+            r.ErroType = BoletoDuplicado.Lista;
+            Layout ret = r.Retorno(cFileRET);
+
+            // O resultado pode vir completo em uma tabela
+            // var tb = ret.Table(typeof(CNAB400Retorno1Bradesco)); 
+            //string cErros = r.ErroLinhas;
+            //Assert.IsTrue(string.IsNullOrEmpty(cErros), cErros);
+
+            // Ou usa-se o array de boletos
+            foreach (string nn in r.Boletos.NossoNumeros)
+            {
+                BoletoInfo Boleto = r.Boletos[nn];
+                Console.Write("{0} {1:dd/MM/yyyy} {2:C} {3:C} {4:C} {5:C} {6:C} {7:C} {8:C} {9:dd/MM/yyyy} {10:dd/MM/yyyy} {11:dd/MM/yyyy}\r\n",
+                    Boleto.NossoNumero,         // 0 reg[CNAB240SegmentoTCaixa.NossoNumero]
+                    Boleto.DataPagamento,       // 1 reg[CNAB240SegmentoUCaixa.DataOcorrencia];
+                    Boleto.ValorDocumento,      // 2 reg[CNAB240SegmentoTCaixa.ValorDocumento],
+                    Boleto.ValorAcrescimo,      // 3 reg[CNAB240SegmentoUCaixa.ValorAcrescimos];
+                    Boleto.ValorDesconto,       // 4 reg[CNAB240SegmentoUCaixa.ValorDesconto];
+                    Boleto.ValorDesconto2,      // 5 reg[CNAB240SegmentoUCaixa.ValorAbatimento];
+                    Boleto.ValorIOF,            // 6 reg[CNAB240SegmentoUCaixa.ValorIOF];
+                    Boleto.ValorPago,           // 7 reg[CNAB240SegmentoUCaixa.ValorPago];
+                    Boleto.ValorLiquido,        // 8 reg[CNAB240SegmentoUCaixa.ValorLiquido];
+                    Boleto.DataProcessamento,   // 9 reg[CNAB240SegmentoUCaixa.DataOcorrencia];
+                    Boleto.DataCredito,         //10 reg[CNAB240SegmentoUCaixa.DataCredito];
+                    Boleto.DataTarifa);         //11 reg[CNAB240SegmentoUCaixa.DataTarifa];
+            }
+
+            // por causa do tipo (r.ErroType) pode haver duplicidade de dados
+            // pois um boleto pode ter sido baixado e protestado ou pago, 
+            // e com alguma ocorrencia e assim cada registro informa algo
+            Console.WriteLine("Duplicados:");
+            foreach (var Boleto in r.Boletos.Duplicados)
+                Console.Write("{0} {1:dd/MM/yyyy} {2:C}\r\n", Boleto.NossoNumero, Boleto.DataPagamento, Boleto.ValorDocumento);
+        }
+
         [TestMethod, TestCategory("CampoLivre")]
         public void CampoLivre_Caixa()
         {
