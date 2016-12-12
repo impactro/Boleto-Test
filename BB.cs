@@ -7,7 +7,7 @@ using System.IO;
 namespace Test
 {
     [TestClass]
-    public class BB
+    public partial class BB
     {
         const string fileTest = @"..\..\TXT\Remessa_BB.txt"; // para deixar na pasta TXT/ do projeto
 
@@ -49,6 +49,43 @@ namespace Test
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
             Assert.IsTrue(cAnterior == txt);
+        }
+
+        [TestMethod, TestCategory("Retorno")]
+        public void Retorno_BB()
+        {
+            LayoutBancos r = new LayoutBancos();
+            r.Init(Cedente);
+
+            string cFileRET = File.ReadAllText(@"..\..\TXT\Retorno_BB.txt");
+            r.ErroType = BoletoDuplicado.Lista;
+            Layout ret = r.Retorno(cFileRET);
+
+            // O resultado pode vir completo em uma tabela
+            // var tb = ret.Table(typeof(CNAB400Retorno1Bradesco)); 
+            //string cErros = r.ErroLinhas;
+            //Assert.IsTrue(string.IsNullOrEmpty(cErros), cErros);
+
+            // Ou usa-se o array de boletos
+            foreach (string nn in r.Boletos.NossoNumeros)
+            {
+                BoletoInfo Boleto = r.Boletos[nn];
+                Console.Write("{0} {1:dd/MM/yyyy} {2} {3:C} {4:dd/MM/yyyy} {5:dd/MM/yyyy} {6:dd/MM/yyyy}\r\n",
+                    Boleto.NossoNumero,     // 0 reg[CNAB400Retorno1BB.NossoNumero]
+                    Boleto.DataDocumento,   // 1 reg[CNAB400Retorno1BB.OcorrenciaData]
+                    Boleto.NumeroDocumento, // 2 reg[CNAB400Retorno1BB.NumeroDocumento]
+                    Boleto.ValorDocumento,  // 3 reg[CNAB400Retorno1BB.ValorDocumento]
+                    Boleto.DataVencimento,  // 4 reg[CNAB400Retorno1BB.Vencimento]
+                    Boleto.DataPagamento,   // 5 reg[CNAB400Retorno1BB.DataPagamento]
+                    Boleto.ValorPago);      // 6 reg[CNAB400Retorno1BB.ValorPago]
+            }
+
+            // por causa do tipo (r.ErroType) pode haver duplicidade de dados
+            // pois um boleto pode ter sido baixado e protestado ou pago, 
+            // e com alguma ocorrencia e assim cada registro informa algo
+            Console.WriteLine("Duplicados:");
+            foreach (var Boleto in r.Boletos.Duplicados)
+                Console.Write("{0} {1:dd/MM/yyyy} {2:C}\r\n", Boleto.NossoNumero, Boleto.DataPagamento, Boleto.ValorDocumento);
         }
 
         [TestMethod, TestCategory("CampoLivre")]
