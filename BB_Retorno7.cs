@@ -53,7 +53,8 @@ namespace Test
     }
 
     /// <summary>
-    /// Estrutura de Retorno BB: Layout de Arquivo Retorno para convênios na faixa numérica entre 1.000.000 a 9.999.999 (Convênios de 7 posições)    /// banco_do_brasil_cnab400-retorno.pdf - Página 4
+    /// Estrutura de Retorno BB: Layout de Arquivo Retorno para convênios na faixa numérica entre 1.000.000 a 9.999.999 (Convênios de 7 posições)
+    /// banco_do_brasil_cnab400-retorno.pdf - Página 4
     /// </summary>
     [RegLayout(@"^7", DateFormat6 = "ddMMyy")]
     public enum CNAB400Retorno7BB

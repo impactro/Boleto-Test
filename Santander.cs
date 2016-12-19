@@ -9,8 +9,6 @@ namespace Test
     [TestClass]
     public class Santander
     {
-        const string fileTest = @"..\..\TXT\Remessa_Santander.txt"; // para deixar na pasta TXT/ do projeto
-
         CedenteInfo Cedente;
 
         [TestInitialize]
@@ -28,22 +26,43 @@ namespace Test
             Cedente.Cedente = "TESTE QUALQUER LTDA";
             Cedente.CNPJ = "88.083.264/0001-05";
             Cedente.useSantander = true; //importante para gerar o código de barras correto (por questão de compatibilidade o padrão é false)
-            Cedente.Layout = LayoutTipo.CNAB400;
         }
 
         [TestMethod, TestCategory("Remessa")]
-        public void Remessa_Santander()
+        public void Remessa_Santander240()
         {
             LayoutBancos lb = new LayoutBancos();
+            Cedente.Layout = LayoutTipo.CNAB240; // O Santander tem os dois layouts, o CNAB400 é sempre o padrão se selecionar auto
             lb.Init(Cedente);
             lb.DataHoje = Util.DataTeste;
             Util.AddBoletos(lb);
+            // lb.ShowDumpLine = true;
             string txt = lb.Remessa();
             Console.Write(txt);
+            string cAnterior;
+            File.WriteAllText(@"..\..\TXT\Teste_Santander240.txt", txt); // Gera um arquivo para testes de compraração
+            // File.WriteAllText(@"..\..\TXT\Remessa_Santander240.txt", txt); // Gera um novo modelo
+            cAnterior = File.ReadAllText(@"..\..\TXT\Remessa_Santander240.txt");
 
-            File.WriteAllText(@"..\..\TXT\Teste_Santander.txt", txt); // Gera um arquivo para testes de compraração
-            // File.WriteAllText(fileTest, txt); // Gera um novo modelo
-            string cAnterior = File.ReadAllText(fileTest);
+            // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
+            Assert.IsTrue(cAnterior == txt, "O resultado da remessa mudou");
+        }
+
+        [TestMethod, TestCategory("Remessa")]
+        public void Remessa_Santander400()
+        {
+            LayoutBancos lb = new LayoutBancos();
+            Cedente.Layout = LayoutTipo.CNAB400; // layout padrão
+            lb.Init(Cedente);
+            lb.DataHoje = Util.DataTeste;
+            Util.AddBoletos(lb);
+            // lb.ShowDumpLine = true;
+            string txt = lb.Remessa();
+            Console.Write(txt);
+            string cAnterior;
+            File.WriteAllText(@"..\..\TXT\Teste_Santander400.txt", txt); // Gera um arquivo para testes de compraração
+            // File.WriteAllText(@"..\..\TXT\Remessa_Santander400.txt", txt); // Gera um novo modelo
+            cAnterior = File.ReadAllText(@"..\..\TXT\Remessa_Santander400.txt");
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
             Assert.IsTrue(cAnterior == txt, "O resultado da remessa mudou");
