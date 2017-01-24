@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BB_Remessa5.cs" />
     <Compile Include="BB_Retorno7.cs" />
     <Compile Include="BB.cs" />
     <Compile Include="Banestes.cs" />
