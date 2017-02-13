@@ -57,7 +57,7 @@ namespace Test
             LayoutBancos r = new LayoutBancos();
             r.Init(Cedente);
 
-            string cFileRET = File.ReadAllText(@"..\..\TXT\Retorno_BB.txt");
+            string cFileRET = File.ReadAllText(@"..\..\TXT\Retorno_BB240.txt");
             r.ErroType = BoletoDuplicado.Lista;
             Layout ret = r.Retorno(cFileRET);
 

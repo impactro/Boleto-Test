@@ -45,14 +45,15 @@ namespace Test
             foreach (string nn in r.Boletos.NossoNumeros)
             {
                 BoletoInfo Boleto = r.Boletos[nn];
-                Console.Write("{0} {1:dd/MM/yyyy} {2} {3:C} {4:dd/MM/yyyy} {5:dd/MM/yyyy} {6:C}\r\n",
+                Console.Write("{0} {1:dd/MM/yyyy} {2} {3:C} {4:dd/MM/yyyy} {5:dd/MM/yyyy} {6:C} {7}\r\n",
                     Boleto.NossoNumero,     // 0 reg[CNAB400Retorno1Itau.NossoNumero],
                     Boleto.DataDocumento,   // 1 reg[CNAB400Retorno1Itau.OcorrenciaData],
                     Boleto.NumeroDocumento, // 2 reg[CNAB400Retorno1Itau.NumeroDocumento],
                     Boleto.ValorDocumento,  // 3 reg[CNAB400Retorno1Itau.ValorDocumento],
                     Boleto.DataVencimento,  // 4 reg[CNAB400Retorno1Itau.Vencimento],
                     Boleto.DataPagamento,   // 5 reg[CNAB400Retorno1Itau.DataPagamento],
-                    Boleto.ValorPago);      // 6 reg[CNAB400Retorno1Itau.ValorPago]
+                    Boleto.ValorPago,       // 6 reg[CNAB400Retorno1Itau.ValorPago]
+                    Boleto.Ocorrencia);     // 7 Ocorencia
             }
 
             // por causa do tipo (r.ErroType) pode haver duplicidade de dados
