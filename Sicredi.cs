@@ -40,6 +40,8 @@ namespace Test
             // Exibir as informações de DUMP ajuda a char os erros e diferenças
             // lb.ShowDumpLine = true;
 
+            // Mas atenção, a geração do nosso numero usa o ANO atual como parametro
+            // Alguns clientes usam a data de vencimento, dependendo do tipo de solução
             string txt = lb.Remessa();
             Console.Write(txt);
 
@@ -93,7 +95,7 @@ namespace Test
             Console.WriteLine(
                 "Campo Livre: " + cl + 
                 " Nosso Número: " + blt.NossoNumeroExibicao );
-            Assert.IsTrue(cl == "3101244444011112233333001", "Erro");
+            Assert.IsTrue(cl == "3117244444811112233333001", "Erro"); // O Ano atual é usado como referencia para gerar o nosso numero
 
             /* Do exemplo da documentação página 16 (https://github.com/impactro/Boleto-Test/blob/master/DOC/sicredi_cnab400.pdf)
             Linha digitável: 74891.11422 00001.03544 02000.921078 9 618700000010000 (usando http://exemplos.boletoasp.com.br/BoletoNet/FuncTeste_DecodIPTE.aspx para obter o código de barras)
@@ -110,7 +112,7 @@ namespace Test
             Console.WriteLine(
                 "Campo Livre: " + cl +
                 " Nosso Número: " + blt.NossoNumeroExibicao);
-            Assert.IsTrue(cl == "1114200001035442000921000", "Erro"); 
+            Assert.IsTrue(cl == "1117200001835442000921003", "Erro"); // Embora seja o Ano, alguns clientes usam a data de vencimento, ou seja, depende de cada implementação
         }
     }
 }
