@@ -3,16 +3,12 @@ Boleto-Test
 
 Testes funcionais de compatibilidade para validação das rotinas de remessa e retorno do componente [BoletoASP DLL .Net](http://www.boletoasp.com.br)
 
-1. Exibição de Boleto
-	* HTML (ASP.Net WebControl)
-	* Imagem (PNG,BMP,GDI:WindowsControl)
-	* Formatos: Normal ou Carne
-	* [Bancos Suportados](https://github.com/impactro/Boleto-Test/wiki/Bancos-Suportados)
+Os boletos sem registros serão extintos, conheça os prazos e leia os itens sugeridos abaixo
+
+![Conheça os Prazos](https://raw.githubusercontent.com/impactro/Boleto-Test/master/DOC/PrazoRegistro.JPG)
+
+* [Fim do boletos sem registro](https://github.com/impactro/Boleto-Test/wiki/Fim-do-boletos-sem-registro) 
+
+* [Bancos Suportados](https://github.com/impactro/Boleto-Test/wiki/Bancos-Suportados)
 	
-2. Remessa/Retorno (Arquivos)
-
-3. Recursos em desenvolvimento
-	* Geração em PDF - [Usando iTextSharp](http://sourceforge.net/projects/itextsharp/)
-
-4. [Wiki](https://github.com/impactro/Boleto-Test/wiki)
-	* Documentação de referencia comum para os projetos para ASP.Net, Windowsform, VB6, e ASP
+* [Wiki Completa](https://github.com/impactro/Boleto-Test/wiki)
