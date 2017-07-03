@@ -53,7 +53,7 @@ namespace Test
                     Boleto.DataVencimento,  // 4 reg[CNAB400Retorno1Itau.Vencimento],
                     Boleto.DataPagamento,   // 5 reg[CNAB400Retorno1Itau.DataPagamento],
                     Boleto.ValorPago,       // 6 reg[CNAB400Retorno1Itau.ValorPago]
-                    Boleto.Ocorrencia);     // 7 Ocorencia
+                    Boleto.OcorrenciaRetorno); // 7 Ocorencia de retorno
             }
 
             // por causa do tipo (r.ErroType) pode haver duplicidade de dados
