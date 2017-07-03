@@ -12,3 +12,8 @@ Os boletos sem registros serão extintos, conheça os prazos e leia os itens sug
 * [Bancos Suportados](https://github.com/impactro/Boleto-Test/wiki/Bancos-Suportados)
 	
 * [Wiki Completa](https://github.com/impactro/Boleto-Test/wiki)
+
+Atendimento gratuito somente por e-mail, ou Issues, aqui no github.
+
+Estou começando um novo projeto, Nuget, para instalar use:
+[PM> Install-Package StandardBoletoNet](https://www.nuget.org/packages/StandardBoletoNet)
