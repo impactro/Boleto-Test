@@ -62,6 +62,7 @@
     <Compile Include="Itau.cs" />
     <Compile Include="Bradesco.cs" />
     <Compile Include="BRB.cs" />
+    <Compile Include="UtilFunc.cs" />
     <Compile Include="Sicredi.cs" />
     <Compile Include="Sicoob.cs" />
     <Compile Include="Caixa.cs" />
@@ -86,8 +87,7 @@
     <Content Include="TXT\Remessa_Santander400.txt" />
     <Content Include="TXT\Remessa_Sicoob.txt" />
     <Content Include="TXT\Remessa_Sicredi.txt" />
-    <Content Include="TXT\Retorno_BB240.txt" />
-    <Content Include="TXT\Retorno_BB7.txt" />
+    <Content Include="TXT\Retorno_BB.txt" />
     <Content Include="TXT\Retorno_Caixa.txt" />
     <Content Include="TXT\Retorno_Itau.txt" />
     <Content Include="TXT\Retorno_Santander.txt" />
