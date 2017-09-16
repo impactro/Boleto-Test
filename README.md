@@ -1,7 +1,7 @@
 Boleto-Test
 ===========
 
-[Este projeto esta descontinuado](https://github.com/impactro/Boleto-Test/wiki), mas aberto apenas para consulta e referencia sem compromisso
+[Este projeto esta descontinuado](https://github.com/impactro/Boleto-Test/wiki), mas aberto apenas para consulta e referência sem compromisso
 
 -----
 
