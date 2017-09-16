@@ -1,6 +1,10 @@
 Boleto-Test
 ===========
 
+[Este projeto esta descontinuado](https://github.com/impactro/Boleto-Test/wiki), mas aberto apenas para consulta e referencia sem compromisso
+
+-----
+
 Testes funcionais de compatibilidade para validação das rotinas de remessa e retorno do componente BoletoASP
 
 Os boletos sem registros serão extintos, conheça os prazos e leia os itens sugeridos abaixo
