@@ -1,7 +1,7 @@
 Boleto-Test
 ===========
 
-Testes funcionais de compatibilidade para validação das rotinas de remessa e retorno do componente [BoletoASP DLL .Net](http://www.boletoasp.com.br)
+Testes funcionais de compatibilidade para validação das rotinas de remessa e retorno do componente BoletoASP
 
 Os boletos sem registros serão extintos, conheça os prazos e leia os itens sugeridos abaixo
 
