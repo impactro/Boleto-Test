@@ -28,6 +28,7 @@ namespace Test
             Cedente.Layout = LayoutTipo.CNAB400;
         }
 
+        
         [TestMethod, TestCategory("Remessa")]
         public void Remessa_BB()
         {
@@ -44,13 +45,14 @@ namespace Test
             Console.Write(txt);
 
             File.WriteAllText(@"..\..\TXT\Teste_BB.txt", txt); // Gera um arquivo para testes de compraração
-            // File.WriteAllText(fileTest, txt); // Gera um novo modelo
+            //File.WriteAllText(fileTest, txt); // Gera um novo modelo
             string cAnterior = File.ReadAllText(fileTest);
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
             Assert.IsTrue(cAnterior == txt);
         }
-
+        
+        /*
         [TestMethod, TestCategory("Retorno")]
         public void Retorno_BB()
         {
@@ -87,6 +89,7 @@ namespace Test
             foreach (var Boleto in r.Boletos.Duplicados)
                 Console.Write("{0} {1:dd/MM/yyyy} {2:C}\r\n", Boleto.NossoNumero, Boleto.DataPagamento, Boleto.ValorDocumento);
         }
+        */
 
         [TestMethod, TestCategory("CampoLivre")]
         public void CampoLivre_BB()

@@ -18,8 +18,8 @@ namespace Test
             SacadoInfo Sacado = new SacadoInfo();
             Sacado.Sacado = "Fábio F S";
             Sacado.Documento = "922.719.724-93";
-            Sacado.Endereco = "rua qualquer lugar, S/N";
-            Sacado.Cidade = "2º São Paulo"; // prevendo caracteres especiais
+            Sacado.Endereco = "rua qualquer lugar S/N, 2ºA";
+            Sacado.Cidade = "São Paulo"; // prevendo caracteres especiais
             Sacado.Bairro = "Centro";
             Sacado.Cep = "55555-333";
             Sacado.UF = "SP";

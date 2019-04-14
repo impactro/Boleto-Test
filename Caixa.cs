@@ -57,7 +57,7 @@ namespace Test
             Console.Write(txt);
 
             File.WriteAllText(@"..\..\TXT\Teste_Caixa.txt", txt); // Gera um arquivo para testes de compraração
-            // File.WriteAllText(@"..\..\TXT\Remessa_Caixa.txt", txt); // Gera um novo modelo
+            //File.WriteAllText(@"..\..\TXT\Remessa_Caixa.txt", txt); // Gera um novo modelo
             string cAnterior = File.ReadAllText(@"..\..\TXT\Remessa_Caixa.txt");
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos

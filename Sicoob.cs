@@ -48,7 +48,7 @@ namespace Test
             Console.Write(txt);
 
             File.WriteAllText(@"..\..\TXT\Teste_Sicoob.txt", txt); // Gera um arquivo para testes
-            // File.WriteAllText(fileTest, txt); // Gera um novo modelo
+            //File.WriteAllText(fileTest, txt); // Gera um novo modelo
             string cAnterior = File.ReadAllText(fileTest);
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos

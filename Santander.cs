@@ -41,7 +41,7 @@ namespace Test
             Console.Write(txt);
             string cAnterior;
             File.WriteAllText(@"..\..\TXT\Teste_Santander240.txt", txt); // Gera um arquivo para testes de compraração
-            // File.WriteAllText(@"..\..\TXT\Remessa_Santander240.txt", txt); // Gera um novo modelo
+            File.WriteAllText(@"..\..\TXT\Remessa_Santander240.txt", txt); // Gera um novo modelo
             cAnterior = File.ReadAllText(@"..\..\TXT\Remessa_Santander240.txt");
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
@@ -62,6 +62,7 @@ namespace Test
             string cAnterior;
             File.WriteAllText(@"..\..\TXT\Teste_Santander400.txt", txt); // Gera um arquivo para testes de compraração
             // File.WriteAllText(@"..\..\TXT\Remessa_Santander400.txt", txt); // Gera um novo modelo
+            // no footer foi removido a contege, do header e footer, é contado apenas o numero de boletos!
             cAnterior = File.ReadAllText(@"..\..\TXT\Remessa_Santander400.txt");
 
             // Isso necessáriamente não é um erro, pode ter sido uma correção ou melhoria que agora contemple mais casos
